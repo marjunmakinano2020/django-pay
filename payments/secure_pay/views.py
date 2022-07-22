@@ -4,3 +4,6 @@ from django.http import HttpResponse
 
 def index(request):
     return HttpResponse("Hello, world. You're at the secure pay index.")
+
+def pay(request):
+    return HttpResponse("/pay")
