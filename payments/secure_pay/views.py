@@ -18,6 +18,7 @@ def pay(request):
     # print(r.json())
 
     # Create a payment
+    # Todo: Fix merchantCode, token, orderId, Idempotency-Key, Authorization, auth
     payment_url = 'https://payments-stest.npe.auspost.zone/v2/payments'
     payment_data = {
         "amount": 10000,
