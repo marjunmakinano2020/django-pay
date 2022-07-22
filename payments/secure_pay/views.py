@@ -9,6 +9,8 @@ def index(request):
 
 def pay(request):
     # Get access token
+    # Todo: Fix 'grant_type': 'client_credentials' and 'Authorization': 'Basic xxxxxxxx'
+    # And auth=('0oaxb9i8P9vQdXTsn3l5', '0aBsGU3x1bc-UIF_vDBA2JzjpCPHjoCP7oI6jisp')
     url = 'https://welcome.api2.sandbox.auspost.com.au/oauth/token'
     data = {'grant_type': 'client_credentials', 'audience': 'https://api.payments.auspost.com.au'}
     headers = {'Authorization': 'Basic xxxxxxxx', 'Content-Type': 'application/x-www-form-urlencoded'}
