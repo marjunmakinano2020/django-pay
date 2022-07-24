@@ -29,11 +29,12 @@ def pay(request):
         'Authorization': basic_auth_string,
         'Content-Type': 'application/x-www-form-urlencoded'
     }
-    r = requests.post(url,
-                      data=json.dumps(data),
-                      headers=headers,
-                      auth=('0oaxb9i8P9vQdXTsn3l5',
-                            '0aBsGU3x1bc-UIF_vDBA2JzjpCPHjoCP7oI6jisp')).json()
+    r = requests.post(
+        url,
+        data=json.dumps(data),
+        headers=headers,
+        auth=('0oaxb9i8P9vQdXTsn3l5',
+              '0aBsGU3x1bc-UIF_vDBA2JzjpCPHjoCP7oI6jisp')).json()
     token = r["access_token"]
 
     # Create a payment
