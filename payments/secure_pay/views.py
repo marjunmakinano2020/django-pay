@@ -19,7 +19,6 @@ def pay(request):
     basic_auth_string = 'Basic ' + basic_auth64.decode("utf-8")
 
     # Get access token
-    # And auth=('0oaxb9i8P9vQdXTsn3l5', '0aBsGU3x1bc-UIF_vDBA2JzjpCPHjoCP7oI6jisp')
     url = 'https://welcome.api2.sandbox.auspost.com.au/oauth/token'
     data = {
         'grant_type': 'client_credentials',
@@ -33,7 +32,7 @@ def pay(request):
     token = r["access_token"]
 
     # Create a payment
-    # Todo: Fix token, orderId, Idempotency-Key, Authorization, auth
+    # Todo: Fix token, orderId, Authorization
     bearer_auth = "Bearer " + token
 
     payment_url = 'https://payments-stest.npe.auspost.zone/v2/payments'
@@ -46,7 +45,6 @@ def pay(request):
     }
     payment_headers = {
         "Content-Type": "application/json",
-        "Idempotency-Key": "022361c6-3e59-40df-a58d-532bcc63c3ed",
         "Authorization": bearer_auth
     }
     payment_r = requests.post(payment_url,
