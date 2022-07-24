@@ -32,9 +32,7 @@ def pay(request):
     r = requests.post(
         url,
         data=json.dumps(data),
-        headers=headers,
-        auth=('0oaxb9i8P9vQdXTsn3l5',
-              '0aBsGU3x1bc-UIF_vDBA2JzjpCPHjoCP7oI6jisp')).json()
+        headers=headers).json()
     token = r["access_token"]
 
     # Create a payment
@@ -57,9 +55,7 @@ def pay(request):
     payment_r = requests.post(
         payment_url,
         data=json.dumps(payment_data),
-        headers=payment_headers,
-        auth=('0oaxb9i8P9vQdXTsn3l5',
-              '0aBsGU3x1bc-UIF_vDBA2JzjpCPHjoCP7oI6jisp'))
+        headers=payment_headers)
     # print(payment_r.json())
 
     return HttpResponse("/pay")
