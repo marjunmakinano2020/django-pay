@@ -29,10 +29,7 @@ def pay(request):
         'Authorization': basic_auth_string,
         'Content-Type': 'application/x-www-form-urlencoded'
     }
-    r = requests.post(
-        url,
-        data=json.dumps(data),
-        headers=headers).json()
+    r = requests.post(url, data=json.dumps(data), headers=headers).json()
     token = r["access_token"]
 
     # Create a payment
@@ -52,10 +49,9 @@ def pay(request):
         "Idempotency-Key": "022361c6-3e59-40df-a58d-532bcc63c3ed",
         "Authorization": bearer_auth
     }
-    payment_r = requests.post(
-        payment_url,
-        data=json.dumps(payment_data),
-        headers=payment_headers)
+    payment_r = requests.post(payment_url,
+                              data=json.dumps(payment_data),
+                              headers=payment_headers)
     # print(payment_r.json())
 
     return HttpResponse("/pay")
