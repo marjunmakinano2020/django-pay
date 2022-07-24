@@ -32,7 +32,7 @@ def pay(request):
     token = r["access_token"]
 
     # Create a payment
-    # Todo: Fix token, orderId, Authorization
+    # Todo: Fix Authorization
     bearer_auth = "Bearer " + token
 
     payment_url = 'https://payments-stest.npe.auspost.zone/v2/payments'
