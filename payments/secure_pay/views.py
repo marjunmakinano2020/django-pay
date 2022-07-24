@@ -10,8 +10,10 @@ def index(request):
 
 
 def pay(request):
+    merchant_code = '5AR0055'
     client_id = '0oaxb9i8P9vQdXTsn3l5'
     client_secret = '0aBsGU3x1bc-UIF_vDBA2JzjpCPHjoCP7oI6jisp'
+
     basic_auth = client_id + ':' + client_secret
     basic_auth64 = b64encode(basic_auth.encode("utf-8"))
     basic_auth_string = 'Basic ' + basic_auth64.decode("utf-8")
@@ -31,16 +33,16 @@ def pay(request):
                       data=json.dumps(data),
                       headers=headers,
                       auth=('0oaxb9i8P9vQdXTsn3l5',
-                            '0aBsGU3x1bc-UIF_vDBA2JzjpCPHjoCP7oI6jisp'))
-    # print(r.json())
+                            '0aBsGU3x1bc-UIF_vDBA2JzjpCPHjoCP7oI6jisp')).json()
+    token = r["access_token"]
 
     # Create a payment
     # Todo: Fix merchantCode, token, orderId, Idempotency-Key, Authorization, auth
     payment_url = 'https://payments-stest.npe.auspost.zone/v2/payments'
     payment_data = {
         "amount": 10000,
-        "merchantCode": "YOUR_MERCHANT_CODE",
-        "token": "de305d54-75b4-431b-adb2-eb6b9e546014",
+        "merchantCode": merchant_code,
+        "token": token,
         "ip": "127.0.0.1",
         "orderId": "0475f32d-fc23-4c02-b19b-9fe4b0a848ac"
     }
