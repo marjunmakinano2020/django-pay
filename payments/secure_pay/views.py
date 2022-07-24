@@ -39,6 +39,8 @@ def pay(request):
 
     # Create a payment
     # Todo: Fix token, orderId, Idempotency-Key, Authorization, auth
+    bearer_auth = "Bearer " + token
+
     payment_url = 'https://payments-stest.npe.auspost.zone/v2/payments'
     payment_data = {
         "amount": 10000,
@@ -50,7 +52,7 @@ def pay(request):
     payment_headers = {
         "Content-Type": "application/json",
         "Idempotency-Key": "022361c6-3e59-40df-a58d-532bcc63c3ed",
-        "Authorization": "Bearer xxxxxxxx"
+        "Authorization": bearer_auth
     }
     payment_r = requests.post(
         payment_url,
