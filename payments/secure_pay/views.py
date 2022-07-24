@@ -42,7 +42,7 @@ def pay(request):
     payment_data = {
         "amount": 10000,
         "merchantCode": merchant_code,
-        "token": token,
+        "token": 'de305d54-75b4-431b-adb2-eb6b9e546014',
         "ip": "127.0.0.1",
         "orderId": "0475f32d-fc23-4c02-b19b-9fe4b0a848ac"
     }
