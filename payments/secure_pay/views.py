@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from base64 import b64encode
+from base64 import b64decode
 import requests
 import json
 
@@ -15,8 +16,8 @@ def pay(request):
     client_secret = '0aBsGU3x1bc-UIF_vDBA2JzjpCPHjoCP7oI6jisp'
 
     basic_auth = client_id + ':' + client_secret
-    basic_auth64 = b64encode(basic_auth.encode("utf-8"))
-    basic_auth_string = 'Basic ' + basic_auth64.decode("utf-8")
+    basic_auth64 = b64encode(bytes(basic_auth, 'utf-8'))
+    basic_auth_string = basic_auth64.decode("utf-8")
 
     # Get access token
     url = 'https://welcome.api2.sandbox.auspost.com.au/oauth/token'
